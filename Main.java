@@ -9,7 +9,7 @@ class Solution {
      * Since this can take a considerable amount of time for a very long text and a complex regex, we need to use a
      * separate thread. We use the .join(long millis) method of the thread class to effectively tell our main thread
      * "Wait 5 seconds for this thread to complete". After that, we check if the regexThread is still alive, and if it
-     * is, it means the regex matcher takes too long to complete, resulting in throwing an exception.
+     * is, it means the regex matcher takes too long to complete, so we throw a TimeoutException.
      */
     public boolean matches(String text, String regex) throws InterruptedException, TimeoutException {
         AtomicBoolean result = new AtomicBoolean(false);
